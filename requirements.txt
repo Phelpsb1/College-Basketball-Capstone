@@ -1,0 +1,5 @@
+pandas
+requests
+notebook
+sqlalchemy
+psycopg2 
