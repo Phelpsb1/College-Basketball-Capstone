@@ -206,4 +206,8 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 
+<<<<<<< HEAD
 *.json/
+=======
+*.json
+>>>>>>> ecbf1c8c872140742ddc6cc78f1c693d0643eb0e
