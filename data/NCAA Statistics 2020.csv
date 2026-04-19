@@ -1,4 +1,4 @@
-Team,Conference,NET Rank,PrevNET,AvgOppNET,Rank,WL,Conf.Record,Non-ConferenceRecord,RoadWL,SOS,NonConfSOS,Quadrant1,Quadrant2,Quadrant3,Quadrant4
+Team,Conference,NET Rank,PrevNET,AvgOppNETRank,AvgOppNET,WL,Conf.Record,Non-ConferenceRecord,RoadWL,SOS,NonConfSOS,Q1,Q2,Q3,Q4
 Gonzaga,WCC,1,1,108,146,31-2,17-1,14-1,10-1,111,286,6-2,5-0,10-0,10-0
 Kansas,Big 12,2,2,1,67,27-3,17-1,11-2,10-1,1,1,12-3,8-0,4-0,3-0
 Dayton,Atlantic 10,3,3,89,130,29-2,18-0,11-2,9-0,27,48,5-2,8-0,9-0,7-0
