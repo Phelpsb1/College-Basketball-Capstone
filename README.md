@@ -1,14 +1,31 @@
 # College-Basketball-Capstone
 College-Basketball-Capstone
 4/6
-
-Worked on project proposal and finally landed on a good idea with data we already found to back it up. Came up with what models we are going to build and how we we're going to support evidence found. Worked on pulling data from the API and setting up our main branch, struggled with the API key and deleting the history of the github to protect the key. 4/8
+Worked on project proposal and finally landed on a good idea with data we already found to back it up. Came up with what models we are going to build and how we we're going to support evidence found. Worked on pulling data from the API and setting up our main branch, struggled with the API key and deleting the history of the github to protect the key. 
+4/8
 Ended up just deleting the whole repo and making a new one was easier so we took that method to fix our problem. Working on pulling data from the API and cleaning up the code we already had. 4/13
 working on pulling all the data and getting it cleaned, fixed the issue with the march madness API
 The goals for the near future is to fully finish cleaning the data and create an engine.
 FINAL Capstone: Basketball Analytics
 Scenario
 We are curious of the competitiveness of the college NCAA basketball league. We want to look at elo rating, wins above bubble, and final marchmadness placements to see how they compare over the years. We believe that the gap will increase and less underdogs will be winning throughout the years since the gap has seemingly become bigger.
+4/12
+worked more on trying to fix WAB thinking about ideas that we want to use for showing our theory for presentation.
+4/15
+worked more on calculating WAB got a bit closer with no more errors but the played games are thrown off so the expected wins are thrown off causing WAB to be inaccurate, Worked a bit on trying to pull from the excel files. Couldn't get any information off the excel files for some reason.
+4/19
+Kept working on getting WAB and changed all Excels to CSV's to pull it easier and clean it easier. Worked on cleaning all the CSV's since they all have similar variables but they were labeled differently. After cleaning CSV's cleanly put them all together with the year they were pulled from in the first column, changed the name to combined csv I did this so it would be easier to pull from but I don't think it was really needed. 
+4/20
+Kept troubleshooting WAB
+4/21
+
+Goals for next week
+Calculate WAB
+Make a Clean Table
+Create Engine to transfer data to docker
+Create tables for datagrip
+Build visuals with Q1 wins, WAB, maybe SOS, or AvgOPPNETRANK
+Start Presentation
 
 What You Will Build
 EXCELS + API  →  pandas (EDA + clean)  →  PostgreSQL  →  SQL (normalize + analytics)  →  Metabase
