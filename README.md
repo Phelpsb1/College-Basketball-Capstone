@@ -19,7 +19,7 @@ Kept working on getting WAB and changed all Excels to CSV's to pull it easier an
 Kept troubleshooting WAB
 4/21
 
-Goals for next week
+Goals to work on til project is done.
 Calculate WAB
 Make a Clean Table
 Create Engine to transfer data to docker
