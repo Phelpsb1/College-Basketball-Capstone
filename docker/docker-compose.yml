@@ -2,7 +2,7 @@ services:
 
   postgres:
     image: postgres:16
-    container_name: capstone_postgres
+    container_name: capstone_final_postgres
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -19,7 +19,7 @@ services:
 
   metabase:
     image: metabase/metabase:latest
-    container_name: capstone_metabase
+    container_name: capstone_final_metabase
     depends_on:
       postgres:
         condition: service_healthy
