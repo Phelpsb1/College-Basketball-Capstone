@@ -51,45 +51,53 @@ from "Wab"
 where "Season" < 2021
 group by "Team"
 order by avg("Wab") desc;
---Hightlight team Santa Clara for example:
-select "Team",  avg("Wab") as "Average Wins Above Bubble"
-from "Wab"
-where "Season" > 2021 and "Team" = 'Santa Clara'
-group by "Team"
-order by avg("Wab") desc;
 
-select "Team",  avg("Wab") as "Average Wins Above Bubble"
-from "Wab"
-where "Season" < 2021 and "Team" = 'Santa Clara'
-group by "Team"
-order by avg("Wab") desc;
 
 -- Analytics Query 2
--- Does Quadrant 1 wins have a strong correlation with Wins Above Bubble?
+-- Does Quadrant wins have a strong correlation with Wins Above Bubble?
 
-select distinct n."Team" , n.quad1_wins as "Q1 Wins", w."Wab" as "Wins Above Bubble"
-from ncaa_with_quad_split n, "Wab" w
-where w."Team" = n."Team" and n.year = 2026 and w."Season" = 2026
-group by n."Team", w."Wab", n.quad1_wins
-order by quad1_wins desc;
+SELECT
+    n."Team",
+    AVG((n.quad1_wins - n.quad1_losses) + (n.quad2_wins - n.quad2_losses)+ (n.quad3_wins - n.quad3_losses)) as "Avg Differential",
+    AVG(w."Wab") as "Avg Wins Above Bubble"
+FROM ncaa_with_quad_split n
+JOIN "Wab" w ON w."Team" = n."Team" AND w."Season" = n."Season"
+WHERE n."Season" > 2020
+GROUP BY n."Team"
+ORDER BY "Avg Wins Above Bubble" DESC;
 
 
 -- Analytics Query 3
--- Does teams oppenents NET rank have a strong correlation with Wins Above Bubble?
+-- Biggest Risers and fallers before NIL to After NIL
 
-SELECT DISTINCT
-    n."Team",
-    n."AvgOppNETRank" as "Average Opponent Rank",
-    w."Wab" as "Wins Above Bubble"
-FROM "NCAA" n
-JOIN "Wab" w ON n."Team" = w."Team"
-    AND n."Season" = w."Season"
-
-WHERE w."Season" = 2026
-ORDER BY w."Wab" desc;
+WITH team_wab AS (
+    SELECT
+        "Team",
+        AVG(CASE WHEN "Season" > 2021 THEN "Wab" END) as wab_post_NIL,
+        AVG(CASE WHEN "Season" <= 2021 THEN "Wab" END) as wab_pre_NIL
+    FROM "Wab"
+    GROUP BY "Team"
+    HAVING COUNT(CASE WHEN "Season" > 2021 THEN 1 END) >= 2
+       AND COUNT(CASE WHEN "Season" <= 2021 THEN 1 END) >= 2
+)
+SELECT
+    "Team",
+    COALESCE(ROUND(CAST(wab_pre_NIL AS NUMERIC), 2), 0) as "Pre-NIL",
+    COALESCE(ROUND(CAST(wab_post_NIL AS NUMERIC), 2), 0) as "Post-NIL",
+    COALESCE(ROUND(CAST(ABS(wab_post_NIL - wab_pre_NIL) AS NUMERIC), 2), 0) as "Magnitude",
+    CASE
+        WHEN wab_post_NIL > wab_pre_NIL THEN 'IMPROVED'
+        WHEN wab_post_NIL < wab_pre_NIL THEN 'DECLINED'
+        ELSE 'STABLE'
+    END as "Trend",
+    COALESCE(ROUND(CAST(wab_post_NIL - wab_pre_NIL AS NUMERIC), 2), 0) as "Differential"
+FROM team_wab
+WHERE wab_post_NIL != wab_pre_NIL
+ORDER BY ABS(wab_post_NIL - wab_pre_NIL) DESC
+LIMIT 50;
 
 -- Analytics Query 4
--- Can Wins Above Bubble be used to predict next years regular season?
+-- 2027 College Basketball Regular Season Prediction
 
-select "Team", "predicted_wab_2027" as "2027 Prediction"
-from "Predictions";
+select "Team","net_transfers_2026" as "Transfers","recruiting_2026" as "2026 Recruit Score" ,"predicted_wab_2027" as "2027 Prediction"
+from "Predictions"
