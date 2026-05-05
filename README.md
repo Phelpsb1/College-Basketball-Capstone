@@ -18,6 +18,14 @@ Kept working on getting WAB and changed all Excels to CSV's to pull it easier an
 4/20
 Kept troubleshooting WAB
 4/21
+Got WAB to work and started out databases and started our final presentation
+4/23
+finished most the work had a bit of trouble with metabase and getting our graphs but it all worked and worked on some sql codes for more graphs and visuals. 
+brainstorming better ideas that we could do. 
+4/26
+finished the project and read for presentation
+
+
 
 Goals to work on til project is done.
 Calculate WAB
@@ -26,6 +34,14 @@ Create Engine to transfer data to docker
 Create tables for datagrip
 Build visuals with Q1 wins, WAB, maybe SOS, or AvgOPPNETRANK
 Start Presentation
+
+PROBLEMS THAT WE RAN INTO OVERALL:
+Excel - needed an engine to pull data from it couldn't get it to work so we swapped to CSV
+Columns and cleaning data - columns were named differently thoughout the years
+WAB - just overall it took maybe 30 hours of work
+Engine Container/port - was pulling data from previous project for a bit until we were able to fix it
+Predictor - Had trouble getting the predictor to work and seem accurate at first
+Github merging/pulling - kept deleting eachothers data sometimes and it would randomly delete data is what it seemed like. Still an issue but now its much better since we have much more experience on the project.
 
 What You Will Build
 EXCELS + API  →  pandas (EDA + clean)  →  PostgreSQL  →  SQL (normalize + analytics)  →  Metabase
@@ -109,6 +125,8 @@ Final-capstone/
 ├── keys.json             (Storing API_Key)Needed for pulling API 
 ├── DAT400 Project Proposal.docx    Project Proposal(ignore)
 ├── .gitignore            (git ignore)
+├── Basketball.SQL        (Sql queries)
+├── predictor.ipynb       Predictor for Future Seasons 
 ├── data/
 │   └── NCAA Statistics 2020.xlsx  -Excel files for data
     └── NCAA Statistics 2021.xlsx
@@ -117,5 +135,8 @@ Final-capstone/
     └── NCAA Statistics 2024.xlsx
     └── NCAA Statistics 2025.xlsx
     └── NCAA Statistics 2026.xlsx
+    └── NCAA Statistics Combined.csv
+    └── predictions_2027.csv
 └── docker/
     └── docker-compose.yml ← Defines Postgres + Metabase containers
+    └── .gitignore
